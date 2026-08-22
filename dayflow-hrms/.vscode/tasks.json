@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Backend dev server",
+			"type": "shell",
+			"command": "cd backend && if not exist .env copy .env.example .env && npm install && npm run dev",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
