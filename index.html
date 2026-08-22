@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Profile & Attendance</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="topbar">
+
+        <div class="logo">
+            Dayflow
+        </div>
+
+        <div class="header-right">
+
+            <span id="currentRole">
+                Employee
+            </span>
+
+            <button
+                id="roleButton"
+                onclick="toggleRole()"
+            >
+                Switch to HR/Admin
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+
+        <!-- =========================
+             EMPLOYEE PROFILE
+        ========================== -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Employee Profile</h2>
+
+                    <p>
+                        View and manage employee information
+                    </p>
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="openEditProfile()"
+                >
+                    Edit Profile
+                </button>
+
+            </div>
+
+
+            <!-- PROFILE HEADER -->
+
+            <div class="profile-header">
+
+                <div class="profile-picture-container">
+
+                    <img
+                        id="profilePicture"
+                        src="https://via.placeholder.com/120"
+                        alt="Profile Picture"
+                    >
+
+                    <label
+                        for="profileUpload"
+                        class="upload-btn"
+                    >
+                        Change
+                    </label>
+
+                    <input
+                        type="file"
+                        id="profileUpload"
+                        accept="image/*"
+                        onchange="changeProfilePicture(event)"
+                    >
+
+                </div>
+
+
+                <div class="profile-name">
+
+                    <h1 id="employeeName">
+                        Purvika Santhosh
+                    </h1>
+
+                    <p id="employeeRole">
+                        Software Developer
+                    </p>
+
+                    <span class="status-badge">
+                        Active
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERSONAL DETAILS -->
+
+            <div class="details-section">
+
+                <h3>
+                    Personal Details
+                </h3>
+
+                <div class="details-grid">
+
+                    <div class="detail">
+
+                        <span>
+                            Full Name
+                        </span>
+
+                        <strong id="detailName">
+                            Purvika Santhosh
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Email
+                        </span>
+
+                        <strong id="detailEmail">
+                            purvika@example.com
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Phone
+                        </span>
+
+                        <strong id="detailPhone">
+                            +91 9876543210
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Address
+                        </span>
+
+                        <strong id="detailAddress">
+                            Bengaluru, Karnataka
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOB DETAILS -->
+
+            <div class="details-section">
+
+                <h3>
+                    Job Details
+                </h3>
+
+                <div class="details-grid">
+
+                    <div class="detail">
+
+                        <span>
+                            Employee ID
+                        </span>
+
+                        <strong id="detailId">
+                            EMP001
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Department
+                        </span>
+
+                        <strong id="detailDepartment">
+                            Computer Science
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Designation
+                        </span>
+
+                        <strong id="detailDesignation">
+                            Software Developer
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Joining Date
+                        </span>
+
+                        <strong id="detailJoining">
+                            01 June 2026
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SALARY STRUCTURE -->
+
+            <div class="details-section">
+
+                <h3>
+                    Salary Structure
+                </h3>
+
+                <div class="details-grid">
+
+                    <div class="detail">
+
+                        <span>
+                            Basic Salary
+                        </span>
+
+                        <strong>
+                            ₹30,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            HRA
+                        </span>
+
+                        <strong>
+                            ₹12,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Allowances
+                        </span>
+
+                        <strong>
+                            ₹8,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Total Salary
+                        </span>
+
+                        <strong>
+                            ₹50,000
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DOCUMENTS -->
+
+            <div class="details-section">
+
+                <h3>
+                    Documents
+                </h3>
+
+                <div class="documents">
+
+                    <div class="document">
+
+                        <span>
+                            📄 Aadhaar Card
+                        </span>
+
+                        <button>
+                            View
+                        </button>
+
+                    </div>
+
+
+                    <div class="document">
+
+                        <span>
+                            📄 PAN Card
+                        </span>
+
+                        <button>
+                            View
+                        </button>
+
+                    </div>
+
+
+                    <div class="document">
+
+                        <span>
+                            📄 Offer Letter
+                        </span>
+
+                        <button>
+                            View
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ATTENDANCE
+        ========================== -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        Attendance
+                    </h2>
+
+                    <p>
+                        Track employee check-in and check-out
+                    </p>
+
+                </div>
+
+
+                <div class="attendance-actions">
+
+                    <button
+                        class="checkin-btn"
+                        onclick="checkIn()"
+                    >
+                        Check-in
+                    </button>
+
+
+                    <button
+                        class="checkout-btn"
+                        onclick="checkOut()"
+                    >
+                        Check-out
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- TODAY'S ATTENDANCE -->
+
+            <div class="today-box">
+
+                <div>
+
+                    <span>
+                        Today
+                    </span>
+
+                    <h3 id="todayDate">
+                    </h3>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <span>
+                        Check-in
+                    </span>
+
+                    <strong id="todayCheckIn">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <span>
+                        Check-out
+                    </span>
+
+                    <strong id="todayCheckOut">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Status
+                    </span>
+
+                    <strong
+                        id="todayStatus"
+                        class="status-present"
+                    >
+                        Not Marked
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTER -->
+
+            <div class="attendance-filter">
+
+                <button
+                    class="filter-btn active"
+                    onclick="filterAttendance('all', this)"
+                >
+                    All
+                </button>
+
+
+                <button
+                    class="filter-btn"
+                    onclick="filterAttendance('week', this)"
+                >
+                    This Week
+                </button>
+
+
+                <button
+                    class="filter-btn"
+                    onclick="filterAttendance('month', this)"
+                >
+                    This Month
+                </button>
+
+            </div>
+
+
+            <!-- ATTENDANCE TABLE -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Check-in
+                            </th>
+
+                            <th>
+                                Check-out
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="attendanceTable">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             HR / ADMIN
+        ========================== -->
+
+        <section
+            class="card"
+            id="hrSection"
+        >
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        HR/Admin Attendance
+                    </h2>
+
+                    <p>
+                        View attendance records of all employees
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- HR SUMMARY -->
+
+            <div class="hr-summary">
+
+                <div class="summary-card">
+
+                    <span>
+                        Total Employees
+                    </span>
+
+                    <strong id="totalEmployees">
+                        4
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span>
+                        Present
+                    </span>
+
+                    <strong id="totalPresent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span>
+                        Absent
+                    </span>
+
+                    <strong id="totalAbsent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span>
+                        On Leave
+                    </span>
+
+                    <strong id="totalLeave">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- HR ATTENDANCE TABLE -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Employee
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Check-in
+                            </th>
+
+                            <th>
+                                Check-out
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="hrAttendanceTable">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         EDIT PROFILE MODAL
+    ========================== -->
+
+    <div
+        class="modal"
+        id="editModal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>
+                    Edit Profile
+                </h2>
+
+                <button
+                    class="close-btn"
+                    onclick="closeEditProfile()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <label>
+
+                Full Name
+
+                <input
+                    type="text"
+                    id="editName"
+                >
+
+            </label>
+
+
+            <label>
+
+                Phone
+
+                <input
+                    type="text"
+                    id="editPhone"
+                >
+
+            </label>
+
+
+            <label>
+
+                Address
+
+                <textarea
+                    id="editAddress"
+                ></textarea>
+
+            </label>
+
+
+            <label>
+
+                Designation
+
+                <input
+                    type="text"
+                    id="editDesignation"
+                >
+
+            </label>
+
+
+            <label>
+
+                Department
+
+                <input
+                    type="text"
+                    id="editDepartment"
+                >
+
+            </label>
+
+
+            <div class="modal-buttons">
+
+                <button
+                    class="cancel-btn"
+                    onclick="closeEditProfile()"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="saveProfile()"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

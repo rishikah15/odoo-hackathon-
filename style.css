@@ -1,0 +1,665 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+/* HEADER */
+
+.topbar {
+    height: 70px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-right span {
+    font-weight: 600;
+}
+
+
+/* MAIN CONTAINER */
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+
+/* CARD */
+
+.card {
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    padding: 28px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+/* SECTION TITLE */
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 24px;
+
+    margin-bottom: 5px;
+}
+
+.section-title p {
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+
+/* BUTTONS */
+
+button {
+    border: none;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.primary-btn {
+    background: #2563eb;
+
+    color: white;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+}
+
+.primary-btn:hover {
+    background: #1d4ed8;
+}
+
+#roleButton {
+    background: #111827;
+
+    color: white;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+}
+
+
+/* PROFILE */
+
+.profile-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 25px;
+
+    background: #f8fafc;
+
+    border-radius: 12px;
+
+    margin-bottom: 30px;
+}
+
+.profile-picture-container {
+    position: relative;
+}
+
+.profile-picture-container img {
+    width: 120px;
+
+    height: 120px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 4px solid white;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+#profileUpload {
+    display: none;
+}
+
+.upload-btn {
+    display: block;
+
+    margin-top: 8px;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 7px 12px;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.profile-name h1 {
+    font-size: 27px;
+
+    margin-bottom: 5px;
+}
+
+.profile-name p {
+    color: #6b7280;
+
+    margin-bottom: 10px;
+}
+
+.status-badge {
+    display: inline-block;
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+    padding: 5px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+/* DETAILS */
+
+.details-section {
+    margin-top: 30px;
+}
+
+.details-section h3 {
+    font-size: 18px;
+
+    margin-bottom: 15px;
+}
+
+.details-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.detail {
+    background: #f8fafc;
+
+    padding: 16px;
+
+    border-radius: 10px;
+}
+
+.detail span {
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+    margin-bottom: 6px;
+}
+
+.detail strong {
+    font-size: 15px;
+}
+
+
+/* DOCUMENTS */
+
+.documents {
+    display: grid;
+
+    gap: 10px;
+}
+
+.document {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 14px 16px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+}
+
+.document button {
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    padding: 7px 14px;
+
+    border-radius: 6px;
+}
+
+
+/* ATTENDANCE BUTTONS */
+
+.attendance-actions {
+    display: flex;
+
+    gap: 10px;
+}
+
+.checkin-btn {
+    background: #16a34a;
+
+    color: white;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+}
+
+.checkout-btn {
+    background: #dc2626;
+
+    color: white;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+}
+
+
+/* TODAY */
+
+.today-box {
+    display: grid;
+
+    grid-template-columns:
+        1.5fr repeat(3, 1fr);
+
+    gap: 15px;
+
+    background: #f8fafc;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    margin-bottom: 25px;
+}
+
+.today-box span,
+.time-box span {
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+.today-box h3 {
+    font-size: 18px;
+}
+
+.time-box strong {
+    font-size: 18px;
+}
+
+
+/* STATUS */
+
+.status-present {
+    color: #16a34a;
+}
+
+
+/* FILTER */
+
+.attendance-filter {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 9px 15px;
+
+    border-radius: 7px;
+
+    background: #f1f5f9;
+
+    color: #475569;
+}
+
+.filter-btn.active {
+    background: #2563eb;
+
+    color: white;
+}
+
+
+/* TABLE */
+
+.table-container {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th {
+    background: #f8fafc;
+
+    text-align: left;
+
+    padding: 14px;
+
+    font-size: 13px;
+
+    color: #64748b;
+}
+
+td {
+    padding: 14px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    font-size: 14px;
+}
+
+
+/* STATUS BADGES */
+
+.status {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.status.present {
+    background: #dcfce7;
+
+    color: #15803d;
+}
+
+.status.absent {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+.status.half-day {
+    background: #fef3c7;
+
+    color: #b45309;
+}
+
+.status.leave {
+    background: #ede9fe;
+
+    color: #7c3aed;
+}
+
+
+/* HR SUMMARY */
+
+.hr-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    background: #f8fafc;
+
+    padding: 20px;
+
+    border-radius: 12px;
+}
+
+.summary-card span {
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+}
+
+.summary-card strong {
+    font-size: 28px;
+}
+
+
+/* MODAL */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 500;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+
+    width: 90%;
+
+    max-width: 500px;
+
+    border-radius: 15px;
+
+    padding: 25px;
+}
+
+.modal-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    background: transparent;
+
+    font-size: 28px;
+
+    color: #6b7280;
+}
+
+.modal-content label {
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 15px;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+
+    padding: 11px;
+
+    margin-top: 6px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+}
+
+.modal-content textarea {
+    height: 80px;
+
+    resize: vertical;
+}
+
+.modal-buttons {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.cancel-btn {
+    background: #e5e7eb;
+
+    color: #374151;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .topbar {
+        padding: 0 15px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .section-title {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .today-box {
+        grid-template-columns: 1fr;
+    }
+
+    .hr-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .attendance-actions {
+        width: 100%;
+    }
+
+    .attendance-actions button {
+        flex: 1;
+    }
+
+}
