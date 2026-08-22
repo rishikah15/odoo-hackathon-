@@ -1085,3 +1085,30 @@ document
 
         }
     );
+    document.getElementById("employeeForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("employeeName").value;
+    const employeeId = document.getElementById("employeeId").value;
+    const email = document.getElementById("employeeEmail").value;
+    const department = document.getElementById("department").value;
+    const position = document.getElementById("position").value;
+    const joiningDate = document.getElementById("joiningDate").value;
+    const phone = document.getElementById("phone").value;
+    const status = document.getElementById("status").value;
+
+    console.log({
+        name,
+        employeeId,
+        email,
+        department,
+        position,
+        joiningDate,
+        phone,
+        status
+    });
+
+    alert("Employee added successfully!");
+
+    document.getElementById("employeeForm").reset();
+});
