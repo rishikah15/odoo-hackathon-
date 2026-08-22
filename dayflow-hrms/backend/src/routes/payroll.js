@@ -29,6 +29,7 @@ router.get('/', requireRole('hr'), async (req, res) => {
       SELECT p.*, u.name AS employee_name, u.email AS employee_email
       FROM payroll p
       JOIN users u ON u.id = p.employee_id
+      WHERE u.role = 'employee'
       ORDER BY u.name`);
     return res.json(rows);
   } catch (err) {
@@ -54,7 +55,9 @@ router.put('/:employeeId', requireRole('hr'), async (req, res) => {
   try {
     const { rows } = await pool.query(
       `INSERT INTO payroll (employee_id, basic_salary, hra, allowances, deductions, updated_by, updated_at)
-       VALUES ($1, COALESCE($2,0), COALESCE($3,0), COALESCE($4,0), COALESCE($5,0), $6, NOW())
+       SELECT $1, COALESCE($2,0), COALESCE($3,0), COALESCE($4,0), COALESCE($5,0), $6, NOW()
+       FROM users
+       WHERE id = $1 AND role = 'employee'
        ON CONFLICT (employee_id) DO UPDATE SET
          basic_salary = COALESCE($2, payroll.basic_salary),
          hra = COALESCE($3, payroll.hra),
@@ -65,6 +68,9 @@ router.put('/:employeeId', requireRole('hr'), async (req, res) => {
        RETURNING *`,
       [employeeId, basic_salary, hra, allowances, deductions, req.user.id]
     );
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Employee not found' });
+    }
     return res.json(rows[0]);
   } catch (err) {
     console.error('Update payroll error', err);

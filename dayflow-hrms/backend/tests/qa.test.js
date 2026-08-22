@@ -15,10 +15,12 @@
  * (see backend/README.md). Run with: npm test
  */
 const request = require('supertest');
+const bcrypt = require('bcryptjs');
 const { Client } = require('socket.io-client');
 const { app, server } = require('../src/index');
+const pool = require('../src/db/pool');
 
-let hrToken, empToken, empId, hrId;
+let hrToken, empToken, empId, hrId, secondHrId;
 
 beforeAll(async () => {
   const hrLogin = await request(app)
@@ -27,6 +29,22 @@ beforeAll(async () => {
   hrToken = hrLogin.body.token;
   hrId = hrLogin.body.user.id;
 
+  const secondHrHash = await bcrypt.hash('password123', 10);
+  const { rows: secondHr } = await pool.query(
+    `INSERT INTO users (name, email, password_hash, role, department)
+     VALUES ('Second HR', 'second-hr@dayflow.test', $1, 'hr', 'Human Resources')
+     ON CONFLICT (email) DO UPDATE SET role = EXCLUDED.role
+     RETURNING id`,
+    [secondHrHash]
+  );
+  secondHrId = secondHr[0].id;
+  await pool.query(
+    `INSERT INTO payroll (employee_id, basic_salary, hra, allowances, deductions, updated_by)
+     VALUES ($1, 60000, 10000, 4000, 3000, $2)
+     ON CONFLICT (employee_id) DO NOTHING`,
+    [secondHrId, hrId]
+  );
+
   const empLogin = await request(app)
     .post('/api/auth/login')
     .send({ email: 'employee@dayflow.test', password: 'password123' });
@@ -34,8 +52,10 @@ beforeAll(async () => {
   empId = empLogin.body.user.id;
 });
 
-afterAll((done) => {
-  server.close(done);
+afterAll(async () => {
+  await pool.query('DELETE FROM users WHERE id = $1', [secondHrId]);
+  await pool.end();
+  await new Promise((resolve) => server.close(resolve));
 });
 
 describe('Authentication', () => {
@@ -239,6 +259,15 @@ describe('Payroll visibility', () => {
       .set('Authorization', `Bearer ${hrToken}`);
     expect(res.status).toBe(200);
     expect(Array.isArray(res.body)).toBe(true);
+    expect(res.body.every((row) => row.employee_id !== hrId && row.employee_id !== secondHrId)).toBe(true);
+  });
+
+  test('HR cannot modify another HR user payroll', async () => {
+    const res = await request(app)
+      .put(`/api/payroll/${secondHrId}`)
+      .set('Authorization', `Bearer ${hrToken}`)
+      .send({ basic_salary: 999999 });
+    expect(res.status).toBe(404);
   });
 
   test('HR can update an employee\'s salary structure', async () => {
